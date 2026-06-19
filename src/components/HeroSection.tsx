@@ -1,9 +1,13 @@
+import { useNavigate } from 'react-router-dom'
 import { motion } from 'motion/react'
 import { ChevronRight } from 'lucide-react'
+import WalletButton from './WalletButton'
 
 const VIDEO_URL = 'https://d8j0ntlcm91z4.cloudfront.net/user_38xzZboKViGWJOttwIXH07lWA1P/hf_20260505_101331_74f9b798-3f00-4e86-8a01-377aa16ffeaa.mp4'
 
 export default function HeroSection() {
+  const navigate = useNavigate()
+
   return (
     <section className="relative w-full max-w-[1400px] mx-auto rounded-[48px] bg-white border border-slate-200/50 shadow-[0_40px_100px_-20px_rgba(0,0,0,0.03)] overflow-hidden h-[600px] flex flex-col">
       {/* Video Background */}
@@ -37,13 +41,12 @@ export default function HeroSection() {
           >
             Designing products, powering ecosystems and laying the foundation of a decentralized web for enterprises, builders and communities alike.
           </p>
-          <motion.button
-            whileHover={{ scale: 1.04 }}
-            whileTap={{ scale: 0.97 }}
-            className="mt-8 bg-[#0a152d] text-white text-sm font-semibold px-7 py-3 rounded-full"
+          <button
+            onClick={() => navigate('/contact')}
+            className="mt-8 bg-[#0a152d] text-white text-sm font-semibold px-7 py-3 rounded-full hover:opacity-90 transition-all"
           >
             Contact Us
-          </motion.button>
+          </button>
         </motion.div>
       </div>
 
@@ -55,24 +58,34 @@ export default function HeroSection() {
           transition={{ duration: 0.6, delay: 0.35, ease: [0.16, 1, 0.3, 1] }}
           className="flex items-center bg-white/90 backdrop-blur-2xl px-1.5 py-1.5 rounded-full shadow-[0_12px_40px_rgba(0,0,0,0.08)] border border-slate-200/40"
         >
-          {/* Logo */}
           <div className="w-9 h-9 bg-white border border-slate-100 shadow-sm rounded-full flex items-center justify-center text-sm mr-1">
             ✦
           </div>
 
-          {/* Nav Links */}
-          <button className="text-[12px] font-semibold text-slate-500 hover:text-[#0a1b33] px-4 py-2 transition-colors">
+          <button
+            onClick={() => navigate('/products')}
+            className="text-[12px] font-semibold text-slate-500 hover:text-[#0a1b33] px-4 py-2 transition-colors"
+          >
             Products
           </button>
-          <button className="text-[12px] font-semibold text-slate-500 hover:text-[#0a1b33] px-4 py-2 transition-colors">
+          <button
+            onClick={() => navigate('/docs')}
+            className="text-[12px] font-semibold text-slate-500 hover:text-[#0a1b33] px-4 py-2 transition-colors"
+          >
             Docs
           </button>
 
-          {/* CTA */}
-          <button className="flex items-center gap-1.5 bg-white px-5 py-2 rounded-full text-[12px] font-semibold text-[#0a1b33] border border-slate-200/60 shadow-sm hover:border-slate-300 transition-all ml-1">
+          <button
+            onClick={() => navigate('/contact')}
+            className="flex items-center gap-1.5 bg-white px-5 py-2 rounded-full text-[12px] font-semibold text-[#0a1b33] border border-slate-200/60 shadow-sm hover:border-slate-300 transition-all ml-1"
+          >
             Get in touch
             <ChevronRight size={14} />
           </button>
+
+          <div className="ml-2">
+            <WalletButton />
+          </div>
         </motion.nav>
       </div>
     </section>
